@@ -1,32 +1,35 @@
-# Data GeoJSON Jalan di Batujajar
+# Peta Jalan Wilayah (Data GeoJSON)
 
-Data ini merupakan kumpulan data jalan (*residential road*) di daerah Batujajar yang diambil dari OpenStreetMap.
+Repositori ini berisi data geospasial yang memetakan jaringan jalan, gang, dan jalur di sebuah wilayah di Indonesia. Data ini disimpan dalam satu file, `map.geojson`.
 
-## Struktur Data
+Data ini telah diuji dan dapat divisualisasikan dengan benar menggunakan *tool* online seperti **geojson.io**.
 
-Data terdiri dari 9 feature jalan dengan tipe geometri LineString. Setiap feature memiliki:
+## 🗺️ Apa itu GeoJSON?
 
-### Atribut:
-- `@id`: Identifikasi unik jalan dari OpenStreetMap
-- `highway`: Tipe jalan (semua bertipe "residential")
+**GeoJSON** adalah format standar terbuka (bukan milik perusahaan tertentu) yang dirancang untuk merepresentasikan data geografis. Sederhananya, ini adalah cara untuk menulis data lokasi (seperti titik, garis, atau area) menggunakan format JSON (JavaScript Object Notation) yang ringan dan mudah dibaca manusia.
 
-### Geometri:
-- Tipe: LineString
-- Koordinat: Setiap jalan memiliki sekumpulan titik koordinat dalam format [longitude, latitude]
+Karena formatnya yang universal, GeoJSON sangat populer dan didukung oleh hampir semua perangkat lunak GIS dan *library* pemetaan web (seperti Leaflet, Mapbox, dan Google Maps API).
 
-## Daftar Feature
+##  Isi
 
-1. way/306611052 - 8 titik koordinat
-2. way/306611060 - 2 titik koordinat
-3. way/306611071 - 3 titik koordinat
-4. way/306611074 - 2 titik koordinat
-5. way/306611078 - 3 titik koordinat
-6. way/306611082 - 14 titik koordinat
-7. way/306611092 - 4 titik koordinat
-8. way/547188350 - 11 titik koordinat
-9. way/575392522 - 2 titik koordinat
+File `map.geojson` ini adalah sebuah `FeatureCollection`, yang berarti file ini berisi *kumpulan* dari berbagai fitur geografis.
 
-## Metadata
-- Sumber: OpenStreetMap
-- Lisensi: ODbL
-- Tanggal data: 17 Oktober 2025
+* **Tipe Geometri:** Setiap fitur di dalamnya menggunakan tipe geometri `LineString` (garis yang menghubungkan banyak titik koordinat).
+* **Makna:** Setiap `LineString` merepresentasikan sebuah segmen jalan, gang, atau jalur.
+
+Berdasarkan data, contoh jalan yang terpetakan meliputi:
+
+* **Jalan Utama:** 
+* Berdasarkan file `batujajar.geojson` (9 fitur `LineString`):
+  * Semua fitur memiliki properti `highway: residential` — dataset ini hanya memetakan jalan perumahan.
+  * Tipe geometri: `LineString`.
+  * Properti nama jalan, `surface`, atau informasi akses kendaraan (mis. `motorcar`, `motorcycle`) tidak disertakan dalam file ini.
+
+Properti tambahan juga disertakan, seperti `surface` (jenis permukaan jalan, misal `paving_stones`) dan data akses kendaraan (`motorcar`, `motorcycle`, dll.).
+
+## 💻 Penggunaan
+
+File `map.geojson` ini dapat langsung digunakan untuk visualisasi data atau analisis geospasial. Anda dapat memuatnya menggunakan:
+
+* Layanan online seperti **geojson.io** untuk visualisasi dan pengecekan cepat.
+* *Library* pemetaan web (**Google Maps API**).
